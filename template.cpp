@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 #include <utility>
 #include <algorithm>
 #include <cmath>
@@ -10,7 +11,10 @@
 
 using namespace std;
 
-resovle() {
+typedef unsigned int uint;
+typedef unsigned long long ull;
+
+resolve() {
 }
 
 int main() {

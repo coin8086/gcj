@@ -13,6 +13,8 @@ using namespace std;
 
 typedef unsigned int uint;
 typedef unsigned long long ull;
+typedef long long ll;
+typedef long double ld;
 
 resolve() {
 }

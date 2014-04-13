@@ -26,7 +26,7 @@ ld resolve(ld C, ld F, ld X) {
     cout << "s: " << s << endl;;
     cout << "x: " << x << endl;;
 #endif
-    if (abs(last - t) < 0.0000001 || last < t)
+    if (last < t)
       break;
     last = t;
     n++;

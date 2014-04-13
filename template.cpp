@@ -4,9 +4,11 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <queue>
 #include <utility>
 #include <algorithm>
 #include <cmath>
+#include <climits>
 #include <cassert>
 
 using namespace std;
@@ -23,7 +25,6 @@ int main() {
   int T;
   cin >> T;
   for (int t = 0; t < T; t++) {
-
     cout << "Case #" << t + 1 << ": " << resolve() << endl;
   }
   return 0;

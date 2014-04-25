@@ -1,14 +1,6 @@
 #include <iostream>
-#include <sstream>
-#include <string>
 #include <vector>
-#include <map>
-#include <set>
-#include <queue>
-#include <utility>
 #include <algorithm>
-#include <cmath>
-#include <climits>
 #include <cassert>
 
 using namespace std;
@@ -81,13 +73,18 @@ int main() {
     }
     cout << "Case #" << t + 1 << ":" << endl;
     vector<vector<int> > subsets = resolve(num);
-    for (int i = 0; i < subsets.size(); i++) {
-      for (int j = 0; j < subsets[i].size(); j++) {
-        if (j)
-          cout << ' ';
-        cout << subsets[i][j];
+    if (subsets.empty()) {
+      cout << "Impossible" << endl;
+    }
+    else {
+      for (int i = 0; i < subsets.size(); i++) {
+        for (int j = 0; j < subsets[i].size(); j++) {
+          if (j)
+            cout << ' ';
+          cout << subsets[i][j];
+        }
+        cout << endl;
       }
-      cout << endl;
     }
   }
   return 0;

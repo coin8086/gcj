@@ -1,25 +1,14 @@
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
-#include <map>
 #include <set>
-#include <queue>
-#include <utility>
-#include <algorithm>
-#include <cmath>
-#include <climits>
 #include <cassert>
 
 using namespace std;
 
-typedef unsigned int uint;
-typedef unsigned long long ull;
-typedef long long ll;
-typedef long double ld;
-
 typedef vector<string> Flows;
 
+//Count how many '1's there are in the k-th column of flows.
 inline int count_one(const Flows & f, int k) {
   int cnt = 0;
   for (int i = 0; i < f.size(); i++) {
@@ -29,12 +18,14 @@ inline int count_one(const Flows & f, int k) {
   return cnt;
 }
 
+//Flip the k-th column of flows.
 inline void change(Flows & f, int k) {
   for (int i = 0; i < f.size(); i++) {
     f[i][k] = f[i][k] == '0' ? '1' : '0';
   }
 }
 
+//Tell if first k characters of string s and t match.
 inline bool match(const string & s, const string & t, int k) {
   for (int i = 0; i <= k; i++) {
     if (s[i] != t[i])
@@ -43,6 +34,7 @@ inline bool match(const string & s, const string & t, int k) {
   return true;
 }
 
+//Tell if first k columns of flows s and t match.
 bool match(const Flows & s, const Flows & t, int k) {
   set<int> matched;
   int N = s.size();
@@ -62,8 +54,10 @@ bool match(const Flows & s, const Flows & t, int k) {
 }
 
 bool search(int N, int L, Flows & s, Flows & t, int i, int & times) {
-  if (i == L)
+  if (i == L) {
+    //Since we always try no-change match first, this is the minimum times of change.
     return true;
+  }
 
   int ones_s = count_one(s, i);
   int ones_t = count_one(t, i);
@@ -71,7 +65,7 @@ bool search(int N, int L, Flows & s, Flows & t, int i, int & times) {
   //Need to change at first
   if (ones_s != ones_t) {
     if (ones_s + ones_t != N) {
-      return false;
+      return false; //Impossible anyway
     }
     times++;
     change(s, i);
@@ -94,6 +88,7 @@ bool search(int N, int L, Flows & s, Flows & t, int i, int & times) {
   if (!changable)
     return false;
 
+  //If ones_s == ones_t, then we have second chance to make change and match.
   times++;
   change(s, i);
   if (match(s, t, i) && search(N, L, s, t, i + 1, times)) {

@@ -1,30 +1,29 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <cassert>
 
 using namespace std;
 
 typedef vector<int> Row;
 
-inline void resolve(const Row & r1, const Row & r2) {
-  int s = 0;
-  int n;
+inline void resolve(const Row & a, const Row & b) {
+  int found = 0;
   for (int i = 0; i < 4; i++) {
-    if (find(r2.begin(), r2.end(), r1[i]) != r2.end()) {
-      if (!s) {
-        s = 1;
-        n = r1[i];
-      }
-      else if (s == 1) {
-        s = 2;
-        break;
+    for (int j = 0; j < 4; j++) {
+      if (a[i] == b[j]) {
+        if (!found) {
+          found = a[i];
+        }
+        else {
+          found = -1;
+          break;
+        }
       }
     }
   }
-  if (s == 1)
-    cout << n;
-  else if (s == 2)
+  if (found > 0)
+    cout << found;
+  else if (found < 0)
     cout << "Bad magician!";
   else
     cout << "Volunteer cheated!";

@@ -29,11 +29,12 @@ string about(T v) {
 }
 
 int main() {
+  cout << "INT_MIN: \t" << INT_MIN << " \tabout: " << about(INT_MIN) << endl;
+  cout << "INT_MAX: \t" << INT_MAX << " \tabout: " << about(INT_MAX) << endl;
+  cout << "UINT_MAX: \t" << UINT_MAX << " \tabout: " << about(UINT_MAX) << endl;
   cout << "LLONG_MIN: \t" << LLONG_MIN << " \tabout: " << about(LLONG_MIN) << endl;
   cout << "LLONG_MAX: \t" << LLONG_MAX << " \tabout: " << about(LLONG_MAX) << endl;
   cout << "ULLONG_MAX: \t" << ULLONG_MAX << " \tabout: " << about(ULLONG_MAX) << endl;
-  cout << "DBL_MANT_DIG: \t" << DBL_MANT_DIG << endl;
-  cout << "LDBL_MANT_DIG: \t" << LDBL_MANT_DIG << endl;
   cout << "DBL_DIG: \t" << DBL_DIG << endl;
   cout << "LDBL_DIG: \t" << LDBL_DIG << endl;
   cout << "DBL_MAX: \t" << DBL_MAX << " \tabout: " << about(DBL_MAX) << endl;

@@ -18,9 +18,7 @@ typedef unsigned long long ull;
 typedef long long ll;
 typedef long double ld;
 
-int change(const string & s1, const string & s2, string * result = 0) {
-  string a = s1;
-  string b = s2;
+int change(string & a, string & b) {
   a.reserve(200);
   b.reserve(200);
   string::iterator p = a.begin();
@@ -46,45 +44,15 @@ int change(const string & s1, const string & s2, string * result = 0) {
     else
       return -1;
   }
-  if (result)
-    *result = a;
   return times;
 }
 
-string slim(const string & a) {
-  string r = a;
-  string::iterator p = r.begin();
-  for (; *p; p++) {
-    while (*p && *p == *(p + 1))
-      r.erase(p);
-  }
-  return r;
-}
-
-inline void resolve(const vector<string> & strs) {
-  string s = slim(strs[0]);
-  vector<int> dist;
-  for (int i = 0; i < strs.size(); i++) {
-    int c = change(strs[i], s);
-    if (c < 0) {
-      cout << "Fegla Won";
-      return;
-    }
-    dist.push_back(c);
-  }
-  sort(dist.begin(), dist.end());
-  int mid;
-  if (dist.size() % 2)
-    mid = dist[dist.size() / 2];
-  else {
-    int m = dist.size() / 2;
-    mid = (dist[m - 1] + dist[m]) / 2;
-  }
-  int minimum = 0;
-  for (int i = 0; i < dist.size(); i++) {
-    minimum += abs(dist[i] - mid);
-  }
-  cout << minimum;
+inline void resolve(string & a, string & b) {
+  int times = change(a, b);
+  if (times >= 0)
+    cout << times;
+  else
+    cout << "Fegla Won";
 }
 
 int main() {
@@ -93,15 +61,10 @@ int main() {
   for (int t = 0; t < T; t++) {
     int N;
     cin >> N;
-    vector<string> strs;
-    strs.reserve(N);
-    for (int i = 0; i < N; i++) {
-      string s;
-      cin >> s;
-      strs.push_back(s);
-    }
+    string a, b;
+    cin >> a >> b;
     cout << "Case #" << t + 1 << ": ";
-    resolve(strs);
+    resolve(a, b);
     cout << endl;
   }
   return 0;
